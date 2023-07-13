@@ -11,12 +11,10 @@ export class NavbarComponent {
   }
 
   jeDoktor(): boolean {
-    console.log(localStorage.getItem('doktor'));
     return localStorage.getItem('doktor') == 'true';
   }
 
   jePacijent(): boolean {
-    console.log(localStorage.getItem('pacijent'));
     return localStorage.getItem('pacijent') == 'true';
   }
 }

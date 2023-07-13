@@ -1,9 +1,10 @@
 <div>
-  <div>{{ termin.vreme }}</div>
+  <div>{{ termin.vreme | date : "yyyy-mm-dd hh:mm:ss" }}</div>
   <div>{{ termin.jmbg }}</div>
   <div>{{ termin.ime }} {{ termin.prezime }}</div>
   <div>{{ termin.brTelefona }}</div>
   <div>
-    <button (click)="otkaziTermin(termin.id)">Otkazi</button>
+    <button (click)="otkaziTermin()" [disabled]="proslo24">Otkazi</button>
   </div>
+  <div *ngIf="proslo24">Proslo je 24 sata od termina</div>
 </div>
