@@ -37,12 +37,6 @@ export class NedeljniPrikazComponent {
     return moment(new Date(datum)).week();
   }
 
-  otkaziTermin(id: number): void {
-    this.ts
-      .otkaziTermin(id)
-      .subscribe({ next: () => {}, error: (err) => console.log(err) });
-  }
-
   prethodni(): void {
     if (this.index > 0) {
       this.index -= 1;

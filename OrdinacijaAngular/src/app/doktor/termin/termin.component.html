@@ -4,7 +4,6 @@
   <div>{{ termin.ime }} {{ termin.prezime }}</div>
   <div>{{ termin.brTelefona }}</div>
   <div>
-    <button (click)="otkaziTermin()" [disabled]="proslo24">Otkazi</button>
+    <button type="button" (onClick)="otkaziTermin()">Otkazi</button>
   </div>
-  <div *ngIf="proslo24">Proslo je 24 sata od termina</div>
 </div>

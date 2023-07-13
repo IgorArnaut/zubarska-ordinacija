@@ -5,10 +5,6 @@
 
 <th>{{ index }}</th>
 <table>
-  <tr>
-    <th>{{ danas[0].datum }}</th>
-  </tr>
-
   <tr *ngFor="let termin of danas">
     <td>
       <app-termin [termin]="termin" />

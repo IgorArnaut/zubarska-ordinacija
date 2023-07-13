@@ -11,7 +11,7 @@ import { ZakazivanjeComponent } from './zakazivanje/zakazivanje.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PrijavaComponent } from './auth/prijava/prijava.component';
 import { OdjavaComponent } from './auth/odjava/odjava.component';
-import { TerminComponent } from './termin/termin.component';
+import { TerminComponent } from './doktor/termin/termin.component';
 
 @NgModule({
   declarations: [

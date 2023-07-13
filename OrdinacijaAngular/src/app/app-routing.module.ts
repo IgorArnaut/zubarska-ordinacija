@@ -7,7 +7,7 @@ import { NedeljniPrikazComponent } from './doktor/nedeljni-prikaz/nedeljni-prika
 import { OdjavaComponent } from './auth/odjava/odjava.component';
 import { doktorGuard } from './auth/doktor.guard';
 import { pacijentGuard } from './auth/pacijent.guard';
-import { TerminComponent } from './termin/termin.component';
+import { TerminComponent } from './doktor/termin/termin.component';
 
 const routes: Routes = [
   {
