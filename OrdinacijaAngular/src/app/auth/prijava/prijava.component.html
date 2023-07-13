@@ -1,0 +1,9 @@
+<form (ngSubmit)="prijava()" [formGroup]="prijavaForma">
+  <div>
+    <label for="jmbg">JMBG / Sifra</label>
+    <input id="jmbg" type="text" formControlName="jmbg" />
+  </div>
+  <div>
+    <input type="submit" value="Prijavi se" />
+  </div>
+</form>

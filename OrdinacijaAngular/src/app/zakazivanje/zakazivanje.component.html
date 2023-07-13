@@ -1,0 +1,39 @@
+<form [formGroup]="zakazivanjeForma" (ngSubmit)="zakazi()">
+  <div>
+    <label for="datum">Datum: </label>
+    <input id="datum" type="date" formControlName="datum" />
+  </div>
+
+  <div>
+    <label for="vreme">Vreme: </label>
+    <select id="vreme" formControlName="vreme">
+      <option *ngFor="let vreme of vremena" value="{{ vreme }}">
+        {{ vreme }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="jmbg">JMBG: </label>
+    <input type="text" formControlName="jmbg" />
+  </div>
+
+  <div>
+    <label for="jmbg">Ime: </label>
+    <input type="text" formControlName="ime" />
+  </div>
+
+  <div>
+    <label for="jmbg">Prezime: </label>
+    <input type="text" formControlName="prezime" />
+  </div>
+
+  <div>
+    <label for="jmbg">Broj telefona: </label>
+    <input type="text" formControlName="brTelefona" />
+  </div>
+
+  <div>
+    <input type="submit" value="Zakazi" />
+  </div>
+</form>

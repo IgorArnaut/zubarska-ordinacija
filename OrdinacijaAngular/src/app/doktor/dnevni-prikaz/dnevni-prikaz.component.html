@@ -1,0 +1,29 @@
+<button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
+<button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
+  Sledeci
+</button>
+
+<th>{{ index }}</th>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Datum</th>
+    <th>Vreme</th>
+    <th>JMBG</th>
+    <th>Ime</th>
+    <th>Prezime</th>
+    <th>Broj telefona</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let termin of danas">
+    <td>{{ termin.id }}</td>
+    <td>{{ termin.datum | date : "yyyy-mm-dd" : "UTC + 1" }}</td>
+    <td>{{ termin.vreme | date : "hh:mm:ss" }}</td>
+    <td>{{ termin.jmbg }}</td>
+    <td>{{ termin.ime }}</td>
+    <td>{{ termin.prezime }}</td>
+    <td>{{ termin.brTelefona }}</td>
+    <td><button (click)="otkaziTermin(termin.id)">Otkazi</button></td>
+  </tr>
+</table>

@@ -1,0 +1,41 @@
+<nav>
+  <a
+    *ngIf="jeDoktor() && !jePacijent()"
+    routerLink="/doktor/nedeljni-prikaz"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Nedeljni prikaz</a
+  >
+
+  <a
+    *ngIf="jeDoktor() && !jePacijent()"
+    routerLink="/doktor/dnevni-prikaz"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Dnevni prikaz</a
+  >
+
+  <a
+    *ngIf="!jeDoktor() && jePacijent()"
+    routerLink="/pacijent"
+    [queryParams]="{ jmbg: vratiJmbg() }"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Termin</a
+  >
+
+  <a
+    *ngIf="jeDoktor() || jePacijent()"
+    routerLink="/zakazivanje"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Zakazivanje</a
+  >
+  <a
+    *ngIf="jeDoktor() || jePacijent()"
+    routerLink="/odjava"
+    routerLinkActive="odjava"
+    ariaCurrentWhenActive="page"
+    >Odjava</a
+  >
+</nav>
