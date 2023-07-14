@@ -1,13 +1,15 @@
-<button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
-<button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
-  Sledeci
-</button>
+<div *ngIf="danas">
+  <button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
+  <button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
+    Sledeci
+  </button>
 
-<th>{{ index }}</th>
-<table>
-  <tr *ngFor="let termin of danas">
-    <td>
-      <app-termin [termin]="termin" />
-    </td>
-  </tr>
-</table>
+  <div>{{ index }}</div>
+  <table border="1">
+    <tr *ngFor="let termin of danas">
+      <td>
+        <app-termin [termin]="termin" />
+      </td>
+    </tr>
+  </table>
+</div>

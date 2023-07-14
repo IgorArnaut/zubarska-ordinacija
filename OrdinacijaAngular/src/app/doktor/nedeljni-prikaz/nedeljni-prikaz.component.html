@@ -1,23 +1,26 @@
-<button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
-<button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
-  Sledeci
-</button>
+<div *ngIf="sedmica">
+  <button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
+  <button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
+    Sledeci
+  </button>
 
-<th>{{ index }}</th>
-<table>
-  <tr>
-    <th>Ponedeljak</th>
-    <th>Utorak</th>
-    <th>Sreda</th>
-    <th>Cetvrtak</th>
-    <th>Petak</th>
-    <th>Subota</th>
-    <th>Nedelja</th>
-  </tr>
+  <div>{{ index }}</div>
 
-  <tr>
-    <td *ngFor="let dan of sedmica">
-      <app-termin *ngFor="let termin of dan" [termin]="termin" />
-    </td>
-  </tr>
-</table>
+  <table border="1">
+    <tr>
+      <th>Ponedeljak</th>
+      <th>Utorak</th>
+      <th>Sreda</th>
+      <th>Cetvrtak</th>
+      <th>Petak</th>
+      <th>Subota</th>
+      <th>Nedelja</th>
+    </tr>
+
+    <tr>
+      <td *ngFor="let dan of sedmica">
+        <app-termin *ngFor="let termin of dan" [termin]="termin" />
+      </td>
+    </tr>
+  </table>
+</div>

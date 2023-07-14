@@ -19,7 +19,7 @@ export class TerminService {
     return this.http.get<Termin[]>(`${baseUrl}/termini`);
   }
 
-  vratiTerminePacijenta(jmbg: string): Observable<Termin> {
+  vratiTerminPacijenta(jmbg: string): Observable<Termin> {
     return this.http.get<Termin>(`${baseUrl}/pacijenti/${jmbg}/termin`);
   }
 

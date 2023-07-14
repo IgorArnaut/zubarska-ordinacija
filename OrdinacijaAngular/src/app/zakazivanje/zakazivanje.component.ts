@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Termin } from '../model/termin';
 import { TerminService } from '../termin.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Moment } from 'moment';
+
 import * as moment from 'moment';
 
 @Component({

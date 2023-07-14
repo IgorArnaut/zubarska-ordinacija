@@ -1,34 +1,36 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DnevniPrikazComponent } from './doktor/dnevni-prikaz/dnevni-prikaz.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { NedeljniPrikazComponent } from './doktor/nedeljni-prikaz/nedeljni-prikaz.component';
-import { ZakazivanjeComponent } from './zakazivanje/zakazivanje.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { DnevniPrikazComponent } from './doktor/dnevni-prikaz/dnevni-prikaz.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PrijavaComponent } from './auth/prijava/prijava.component';
+import { NedeljniPrikazComponent } from './doktor/nedeljni-prikaz/nedeljni-prikaz.component';
 import { OdjavaComponent } from './auth/odjava/odjava.component';
+import { PacijentComponent } from './pacijent/pacijent/pacijent.component';
+import { PrijavaComponent } from './auth/prijava/prijava.component';
 import { TerminComponent } from './doktor/termin/termin.component';
+import { ZakazivanjeComponent } from './zakazivanje/zakazivanje.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DnevniPrikazComponent,
-    NedeljniPrikazComponent,
-    ZakazivanjeComponent,
     NavbarComponent,
-    PrijavaComponent,
+    NedeljniPrikazComponent,
     OdjavaComponent,
+    PrijavaComponent,
+    PacijentComponent,
     TerminComponent,
+    ZakazivanjeComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

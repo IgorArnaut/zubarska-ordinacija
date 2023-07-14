@@ -17,8 +17,7 @@
 
   <a
     *ngIf="!jeDoktor() && jePacijent()"
-    routerLink="/pacijent"
-    [queryParams]="{ jmbg: vratiJmbg() }"
+    [routerLink]="['/termini', vratiJmbg()]"
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
     >Termin</a

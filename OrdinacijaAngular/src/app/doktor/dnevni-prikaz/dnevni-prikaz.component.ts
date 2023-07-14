@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Termin } from '../../model/termin';
 import { TerminService } from '../../termin.service';
-import { groupBy, values } from 'lodash';
+
+import { groupBy, sortBy, values } from 'lodash';
 
 @Component({
   selector: 'app-dnevni-prikaz',
@@ -27,9 +29,11 @@ export class DnevniPrikazComponent implements OnInit {
       .subscribe({
         next: (data: Termin[]) => {
           this.termini = values(groupBy(data, (d) => d.datum));
+          this.termini.map((t) =>
+            t.sort((a, b) => a.datum.localeCompare(b.datum))
+          );
           this.danas = this.termini[this.index];
         },
-
         error: (err) => console.log(err),
       });
   }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+
 import { Termin } from '../../model/termin';
 import { TerminService } from '../../termin.service';
+
 import { groupBy, values } from 'lodash';
 import * as moment from 'moment';
 

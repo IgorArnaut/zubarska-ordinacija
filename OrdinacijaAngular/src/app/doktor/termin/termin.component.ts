@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
+
 import { Termin } from 'src/app/model/termin';
 import { TerminService } from 'src/app/termin.service';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-termin',

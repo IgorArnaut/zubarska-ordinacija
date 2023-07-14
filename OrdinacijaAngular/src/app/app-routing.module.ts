@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ZakazivanjeComponent } from './zakazivanje/zakazivanje.component';
-import { PrijavaComponent } from './auth/prijava/prijava.component';
+
+import { doktorGuard } from './auth/doktor.guard';
+import { pacijentGuard } from './auth/pacijent.guard';
+
 import { DnevniPrikazComponent } from './doktor/dnevni-prikaz/dnevni-prikaz.component';
 import { NedeljniPrikazComponent } from './doktor/nedeljni-prikaz/nedeljni-prikaz.component';
 import { OdjavaComponent } from './auth/odjava/odjava.component';
-import { doktorGuard } from './auth/doktor.guard';
-import { pacijentGuard } from './auth/pacijent.guard';
-import { TerminComponent } from './doktor/termin/termin.component';
+import { PrijavaComponent } from './auth/prijava/prijava.component';
+import { PacijentComponent } from './pacijent/pacijent/pacijent.component';
+import { ZakazivanjeComponent } from './zakazivanje/zakazivanje.component';
 
 const routes: Routes = [
   {
@@ -15,8 +17,8 @@ const routes: Routes = [
     component: ZakazivanjeComponent,
   },
   {
-    path: 'pacijent',
-    component: TerminComponent,
+    path: 'termini/:jmbg',
+    component: PacijentComponent,
     canActivate: [pacijentGuard],
   },
   {

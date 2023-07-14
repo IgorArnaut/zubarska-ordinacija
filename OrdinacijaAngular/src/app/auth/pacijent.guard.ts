@@ -5,8 +5,9 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { AuthService } from './auth.service';
 import { inject } from '@angular/core';
+
+import { AuthService } from './auth.service';
 
 function checkLogin(url: string, router: Router): true | UrlTree {
   console.log('Url: ' + url);
