@@ -1,9 +1,28 @@
-<div *ngIf="termin">
-  <div>{{ termin.vreme | date : "yyyy-MM-dd hh:mm:ss" }}</div>
-  <div>{{ termin.jmbg }}</div>
-  <div>{{ termin.ime }} {{ termin.prezime }}</div>
-  <div>{{ termin.brTelefona }}</div>
-  <div>
-    <button type="button" (onClick)="otkaziTermin()">Otkazi</button>
+<div class="card" *ngIf="termin">
+  <div class="card-header">
+    <div class="card-text fw-bold">
+      {{ termin.vreme | date }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      <span class="fw-bold">JMBG</span>: {{ termin.jmbg }}
+    </div>
+    <div class="card-text">
+      <span class="fw-bold">Ime i prezime</span>: {{ termin.ime }}
+      {{ termin.prezime }}
+    </div>
+    <div class="card-text">
+      <span class="fw-bold">Broj telefona</span>: {{ termin.brTelefona }}
+    </div>
+  </div>
+  <div class="card-footer">
+    <button
+      class="btn btn-danger fw-bold fs-5"
+      type="button"
+      (onClick)="otkaziTermin()"
+    >
+      Otkaži
+    </button>
   </div>
 </div>

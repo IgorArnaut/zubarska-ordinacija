@@ -7,7 +7,7 @@ module.exports = (app) => {
 
   router.get("/termini/", termini.vratiSve);
 
-  router.get("/pacijenti/:jmbg/termin", termini.vratiJedan);
+  router.get("/pacijenti/:jmbg/termin", termini.vratiPoJMBG);
 
   router.delete("/termini/:id", termini.otkazi);
 

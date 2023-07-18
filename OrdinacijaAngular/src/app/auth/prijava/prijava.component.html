@@ -1,9 +1,26 @@
-<form (ngSubmit)="prijava()" [formGroup]="prijavaForma">
-  <div>
-    <label for="jmbg">JMBG / Sifra</label>
-    <input id="jmbg" type="text" formControlName="jmbg" />
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col">
+      <form class="form" (ngSubmit)="prijava()" [formGroup]="prijavaForma">
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="jmbg">JMBG / Šifra</label>
+          <input
+            class="form-control"
+            id="jmbg"
+            type="text"
+            formControlName="jmbg"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            class="btn btn-primary fw-bold fs-5"
+            type="submit"
+            value="Prijavi se"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="col-3"></div>
   </div>
-  <div>
-    <input type="submit" value="Prijavi se" />
-  </div>
-</form>
+</div>

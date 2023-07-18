@@ -1,15 +1,39 @@
-<div *ngIf="danas">
-  <button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
-  <button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
-    Sledeci
-  </button>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10" *ngIf="danas">
+      <div class="text-center">
+        <span class="fw-semibold">{{ danas[0].datum | date : "EEEE" }}</span
+        >:
+        {{ danas[0].datum | date }}
+      </div>
 
-  <div>{{ index }}</div>
-  <table border="1">
-    <tr *ngFor="let termin of danas">
-      <td>
+      <div class="mb-3" *ngFor="let termin of danas">
         <app-termin [termin]="termin" />
-      </td>
-    </tr>
-  </table>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+
+    <div class="col-10 d-flex justify-content-between">
+      <button
+        class="btn btn-primary fw-bold fs-5"
+        (click)="prethodni()"
+        [disabled]="!(index > 0)"
+      >
+        Prethodni
+      </button>
+      <button
+        class="btn btn-primary fw-bold fs-5"
+        (click)="sledeci()"
+        [disabled]="!(index + 1 < termini.length)"
+      >
+        Sledeći
+      </button>
+    </div>
+
+    <div class="col-1"></div>
+  </div>
 </div>

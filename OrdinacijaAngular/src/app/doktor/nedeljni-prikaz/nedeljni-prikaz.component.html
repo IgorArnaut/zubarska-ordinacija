@@ -1,26 +1,41 @@
-<div *ngIf="sedmica">
-  <button (click)="prethodni()" [disabled]="!(index > 0)">Prethodni</button>
-  <button (click)="sledeci()" [disabled]="!(index + 1 < termini.length)">
-    Sledeci
-  </button>
+<div class="container">
+  <div class="row">
+    <div class="col" *ngIf="sedmica">
+      <table class="table table-borderless">
+        <tr>
+          <th>Ponedeljak</th>
+          <th>Utorak</th>
+          <th>Sreda</th>
+          <th>Četvrtak</th>
+          <th>Petak</th>
+          <th>Subota</th>
+          <th>Nedelja</th>
+        </tr>
 
-  <div>{{ index }}</div>
-
-  <table border="1">
-    <tr>
-      <th>Ponedeljak</th>
-      <th>Utorak</th>
-      <th>Sreda</th>
-      <th>Cetvrtak</th>
-      <th>Petak</th>
-      <th>Subota</th>
-      <th>Nedelja</th>
-    </tr>
-
-    <tr>
-      <td *ngFor="let dan of sedmica">
-        <app-termin *ngFor="let termin of dan" [termin]="termin" />
-      </td>
-    </tr>
-  </table>
+        <tr>
+          <td *ngFor="let dan of sedmica">
+            <app-termin *ngFor="let termin of dan" [termin]="termin" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-between">
+      <button
+        class="btn btn-primary fw-bold fs-5"
+        (click)="prethodni()"
+        [disabled]="!(index > 0)"
+      >
+        Prethodni
+      </button>
+      <button
+        class="btn btn-primary fw-bold fs-5"
+        (click)="sledeci()"
+        [disabled]="!(index + 1 < termini.length)"
+      >
+        Sledeći
+      </button>
+    </div>
+  </div>
 </div>

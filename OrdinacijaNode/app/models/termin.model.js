@@ -27,17 +27,12 @@ Termin.pronadjiPoJMBG = (jmbg, result) => {
   sql.query(`SELECT * FROM termin WHERE jmbg LIKE ${jmbg}`, (err, res) => {
     if (err) {
       console.log("Greska: ", err);
-      result(err, null);
+      result(null, err);
       return;
     }
 
-    if (res.length) {
-      console.log("Pronadjen termin: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    result({ kind: "Nije pronadjen termin" }, null);
+    console.log("Termin: ", res);
+    result(null, res);
   });
 };
 

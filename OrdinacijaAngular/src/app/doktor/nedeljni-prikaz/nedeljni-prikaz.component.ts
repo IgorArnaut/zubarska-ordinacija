@@ -4,7 +4,7 @@ import { Termin } from '../../model/termin';
 import { TerminService } from '../../termin.service';
 
 import { groupBy, values } from 'lodash';
-import * as moment from 'moment';
+import { DatumService } from 'src/app/datum.service';
 
 @Component({
   selector: 'app-nedeljni-prikaz',
@@ -16,7 +16,7 @@ export class NedeljniPrikazComponent {
   index: number;
   sedmica: Termin[][];
 
-  constructor(private ts: TerminService) {}
+  constructor(private ts: TerminService, private ds: DatumService) {}
 
   ngOnInit(): void {
     this.index = 0;
@@ -26,17 +26,22 @@ export class NedeljniPrikazComponent {
   vratiSveTermine(): void {
     this.ts.vratiSveTermine().subscribe({
       next: (data: Termin[]) => {
-        this.termini = values(
-          groupBy(data, (d) => this.vratiSedmicu(d.datum))
-        ).map((w) => values(groupBy(w, (d) => d.datum)));
+        this.popuniTermine(data);
         this.sedmica = this.termini[0];
       },
       error: (err) => console.log(err),
     });
   }
 
-  private vratiSedmicu(datum: string): number {
-    return moment(new Date(datum)).week();
+  private popuniTermine(data: Termin[]) {
+    this.termini = values(
+      groupBy(data, (d) => this.ds.vratiSedmicu(d.datum))
+    ).map((w) => values(groupBy(w, (d) => d.datum)));
+
+    this.termini.map((w) => {
+      w.map((t) => t.sort((a, b) => this.ds.uporedi(a.datum, b.datum)));
+      w.sort((a, b) => a[0].datum.localeCompare(b[0].datum));
+    });
   }
 
   prethodni(): void {

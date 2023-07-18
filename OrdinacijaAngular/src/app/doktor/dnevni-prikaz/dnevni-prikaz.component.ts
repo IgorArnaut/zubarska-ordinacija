@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Termin } from '../../model/termin';
 import { TerminService } from '../../termin.service';
 
-import { groupBy, sortBy, values } from 'lodash';
+import { groupBy, values } from 'lodash';
+import { DatumService } from 'src/app/datum.service';
 
 @Component({
   selector: 'app-dnevni-prikaz',
@@ -15,7 +16,7 @@ export class DnevniPrikazComponent implements OnInit {
   danas: Termin[];
   index: number;
 
-  constructor(private ts: TerminService) {}
+  constructor(private ts: TerminService, private ds: DatumService) {}
 
   ngOnInit(): void {
     this.index = 0;
@@ -28,14 +29,19 @@ export class DnevniPrikazComponent implements OnInit {
       .pipe()
       .subscribe({
         next: (data: Termin[]) => {
-          this.termini = values(groupBy(data, (d) => d.datum));
-          this.termini.map((t) =>
-            t.sort((a, b) => a.datum.localeCompare(b.datum))
-          );
+          this.popuniTermine(data);
           this.danas = this.termini[this.index];
         },
         error: (err) => console.log(err),
       });
+  }
+
+  private popuniTermine(data: Termin[]) {
+    this.termini = values(groupBy(data, (d) => d.datum));
+    this.termini.map((t) => {
+      t.sort((a, b) => this.ds.uporedi(a.vreme, b.vreme));
+    });
+    this.termini.sort((a, b) => this.ds.uporedi(a[0].datum, b[0].datum));
   }
 
   prethodni(): void {

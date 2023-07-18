@@ -5,6 +5,7 @@ import { Termin } from '../model/termin';
 import { TerminService } from '../termin.service';
 
 import * as moment from 'moment';
+import { DatumService } from '../datum.service';
 
 @Component({
   selector: 'app-zakazivanje',
@@ -16,7 +17,11 @@ export class ZakazivanjeComponent {
   vremena: string[];
   zakazivanjeForma: FormGroup;
 
-  constructor(private ts: TerminService, private fb: FormBuilder) {}
+  constructor(
+    private ts: TerminService,
+    private fb: FormBuilder,
+    private ds: DatumService
+  ) {}
 
   ngOnInit(): void {
     this.vratiSveTermine();
@@ -42,16 +47,7 @@ export class ZakazivanjeComponent {
     this.ts.vratiSveTermine().subscribe({
       next: (data: Termin[]) => {
         this.termini = data;
-
-        this.vremena = [];
-
-        for (let i = 9; i < 17; i++) {
-          const sat: string = i < 10 ? `0${i}` : `${i}`;
-          const opcija1 = `${sat}:00`;
-          const opcija2 = `${sat}:30`;
-          this.vremena.push(opcija1);
-          this.vremena.push(opcija2);
-        }
+        this.vremena = this.ds.vratiVremena();
       },
       error: (err) => {
         console.log(err);

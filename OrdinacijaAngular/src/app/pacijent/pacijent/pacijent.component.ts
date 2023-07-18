@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pacijent.component.css'],
 })
 export class PacijentComponent {
-  termin: Termin;
+  termini: Termin[];
   proslo24: boolean = false;
 
   constructor(private ts: TerminService, private route: ActivatedRoute) {}
@@ -20,11 +20,9 @@ export class PacijentComponent {
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
-        this.ts.vratiTerminPacijenta(params['jmbg']).subscribe({
+        this.ts.vratiTerminePacijenta(params['jmbg']).subscribe({
           next: (data) => {
-            this.termin = data;
-            const diff = moment().diff(moment(this.termin.datum), 'hours');
-            this.proslo24 = diff > 24;
+            this.termini = data;
           },
           error: (err) => console.log(err),
         });
@@ -32,13 +30,5 @@ export class PacijentComponent {
         console.log(this.proslo24);
       },
     });
-  }
-
-  otkaziTermin(): void {
-    if (!this.proslo24) {
-      this.ts
-        .otkaziTermin(this.termin.id)
-        .subscribe({ next: () => {}, error: (err) => console.log(err) });
-    }
   }
 }

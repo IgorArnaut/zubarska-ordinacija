@@ -1,39 +1,62 @@
-<form [formGroup]="zakazivanjeForma" (ngSubmit)="zakazi()">
-  <div>
-    <label for="datum">Datum: </label>
-    <input id="datum" type="date" formControlName="datum" />
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col">
+      <form class="form" [formGroup]="zakazivanjeForma" (ngSubmit)="zakazi()">
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="datum">Datum: </label>
+          <input
+            class="form-control"
+            id="datum"
+            type="date"
+            formControlName="datum"
+          />
+        </div>
 
-  <div>
-    <label for="vreme">Vreme: </label>
-    <select id="vreme" formControlName="vreme">
-      <option *ngFor="let vreme of vremena" value="{{ vreme }}">
-        {{ vreme }}
-      </option>
-    </select>
-  </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="vreme">Vreme: </label>
+          <select class="form-control" id="vreme" formControlName="vreme">
+            <option *ngFor="let vreme of vremena" value="{{ vreme }}">
+              {{ vreme }}
+            </option>
+          </select>
+        </div>
 
-  <div>
-    <label for="jmbg">JMBG: </label>
-    <input type="text" formControlName="jmbg" />
-  </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="jmbg">JMBG: </label>
+          <input class="form-control" type="text" formControlName="jmbg" />
+        </div>
 
-  <div>
-    <label for="jmbg">Ime: </label>
-    <input type="text" formControlName="ime" />
-  </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="jmbg">Ime: </label>
+          <input class="form-control" type="text" formControlName="ime" />
+        </div>
 
-  <div>
-    <label for="jmbg">Prezime: </label>
-    <input type="text" formControlName="prezime" />
-  </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="jmbg">Prezime: </label>
+          <input class="form-control" type="text" formControlName="prezime" />
+        </div>
 
-  <div>
-    <label for="jmbg">Broj telefona: </label>
-    <input type="text" formControlName="brTelefona" />
-  </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="jmbg"
+            >Broj telefona:
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="brTelefona"
+          />
+        </div>
 
-  <div>
-    <input type="submit" value="Zakazi" />
+        <div class="mb-3">
+          <input
+            class="btn btn-primary fw-bold fs-5"
+            type="submit"
+            value="Zakaži"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="col-3"></div>
   </div>
-</form>
+</div>

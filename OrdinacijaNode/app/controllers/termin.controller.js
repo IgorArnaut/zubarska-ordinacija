@@ -36,12 +36,12 @@ exports.vratiSve = (req, res) => {
   });
 };
 
-exports.vratiJedan = (req, res) => {
+exports.vratiPoJMBG = (req, res) => {
   Termin.pronadjiPoJMBG(req.params.jmbg, (err, data) => {
     if (err) {
-      if (err.kind === "Nije pronadjen termin") {
+      if (err.kind === "Nisu pronadjeni termini") {
         res.status(404).send({
-          message: `Nije pronadjen termin za pacijenta sa JMBG ${req.params.jmbg}.`,
+          message: `Nisu pronadjeni termini za pacijenta sa JMBG ${req.params.jmbg}.`,
         });
       } else {
         res.status(500).send({
@@ -57,13 +57,13 @@ exports.otkazi = (req, res) => {
     if (err) {
       if (err.kind === "Nije pronadjen termin") {
         res.status(404).send({
-          message: `Not found Tutorial with id ${req.params.id}.`,
+          message: `Nije pronadjen termin sa id ${req.params.id}.`,
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Tutorial with id " + req.params.id,
+          message: `Ne moze se izbrisati termin sa id ${req.params.id}`,
         });
       }
-    } else res.send({ message: `Tutorial was deleted successfully!` });
+    } else res.send({ message: `Termin je uspesno izbrisan!` });
   });
 };

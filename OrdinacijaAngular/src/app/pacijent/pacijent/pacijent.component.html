@@ -1,9 +1,11 @@
-<div *ngIf="termin">
-  <div>{{ termin.vreme | date : "yyyy-MM-dd hh:mm:ss" }}</div>
-  <div>{{ termin.jmbg }}</div>
-  <div>{{ termin.ime }} {{ termin.prezime }}</div>
-  <div>{{ termin.brTelefona }}</div>
-  <div>
-    <button type="button" (onClick)="otkaziTermin()">Otkazi</button>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10" *ngIf="termini">
+      <div class="mb-3" *ngFor="let termin of termini">
+        <app-termin [termin]="termin" />
+      </div>
+    </div>
+    <div class="col-1"></div>
   </div>
 </div>

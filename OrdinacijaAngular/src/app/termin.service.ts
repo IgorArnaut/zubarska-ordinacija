@@ -19,8 +19,8 @@ export class TerminService {
     return this.http.get<Termin[]>(`${baseUrl}/termini`);
   }
 
-  vratiTerminPacijenta(jmbg: string): Observable<Termin> {
-    return this.http.get<Termin>(`${baseUrl}/pacijenti/${jmbg}/termin`);
+  vratiTerminePacijenta(jmbg: string): Observable<Termin[]> {
+    return this.http.get<Termin[]>(`${baseUrl}/pacijenti/${jmbg}/termin`);
   }
 
   otkaziTermin(id: number): Observable<any> {
