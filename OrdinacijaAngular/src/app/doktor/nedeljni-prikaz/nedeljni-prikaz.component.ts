@@ -5,6 +5,7 @@ import { TerminService } from '../../termin.service';
 
 import { groupBy, values } from 'lodash';
 import { DatumService } from 'src/app/datum.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-nedeljni-prikaz',
@@ -12,9 +13,9 @@ import { DatumService } from 'src/app/datum.service';
   styleUrls: ['./nedeljni-prikaz.component.css'],
 })
 export class NedeljniPrikazComponent {
-  termini: Termin[][][];
+  termini: Map<string, Map<number, any>>[];
   index: number;
-  sedmica: Termin[][];
+  sedmica: Map<string, Map<number, any>>;
 
   constructor(private ts: TerminService, private ds: DatumService) {}
 
@@ -34,14 +35,33 @@ export class NedeljniPrikazComponent {
   }
 
   private popuniTermine(data: Termin[]) {
-    this.termini = values(
+    let temp: Termin[][] = values(
       groupBy(data, (d) => this.ds.vratiSedmicu(d.datum))
-    ).map((w) => values(groupBy(w, (d) => d.datum)));
+    );
+    this.termini = temp.map((w) => this.rasporediTermine(w));
+  }
 
-    this.termini.map((w) => {
-      w.map((t) => t.sort((a, b) => this.ds.uporedi(a.datum, b.datum)));
-      w.sort((a, b) => a[0].datum.localeCompare(b[0].datum));
+  private rasporediTermine(termini: Termin[]) {
+    let dict: Map<string, Map<number, any>> = this.inicirajMapu();
+    termini.forEach((v) => {
+      const dan: number = moment(v.datum).isoWeekday();
+      const vreme: string = moment(v.vreme).format('HH:mm');
+      dict.get(vreme)?.set(dan, v);
     });
+    return dict;
+  }
+
+  private inicirajMapu() {
+    let dict: Map<string, Map<number, any>> = new Map<
+      string,
+      Map<number, Termin>
+    >();
+    this.ds.vratiVremena().forEach((v) => {
+      const dict2: Map<number, any> = new Map<number, any>();
+      for (let i: number = 1; i <= 7; i++) dict2.set(i, null);
+      dict.set(v, dict2);
+    });
+    return dict;
   }
 
   prethodni(): void {

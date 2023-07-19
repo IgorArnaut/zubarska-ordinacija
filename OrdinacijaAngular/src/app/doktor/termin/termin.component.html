@@ -1,7 +1,7 @@
-<div class="card" *ngIf="termin">
+<div class="card">
   <div class="card-header">
     <div class="card-text fw-bold">
-      {{ termin.vreme | date }}
+      {{ termin.vreme | date : "dd.MM.yyyy. HH:mm" }}
     </div>
   </div>
   <div class="card-body">
@@ -20,7 +20,7 @@
     <button
       class="btn btn-danger fw-bold fs-5"
       type="button"
-      (onClick)="otkaziTermin()"
+      (click)="otkaziTermin()"
     >
       Otkaži
     </button>

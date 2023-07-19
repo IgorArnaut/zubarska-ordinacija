@@ -4,15 +4,13 @@ import * as moment from 'moment';
 @Injectable({
   providedIn: 'root',
 })
-export class DatumService implements OnInit {
-  vremena: string[];
-
-  ngOnInit(): void {
-    this.vremena = this.vratiVremena();
+export class DatumService {
+  constructor() {
+    this.vratiVremena();
   }
 
   vratiVremena(): string[] {
-    let vremena = [];
+    const vremena = [];
 
     for (let i = 9; i < 17; i++) {
       const sat: string = i < 10 ? `0${i}` : `${i}`;

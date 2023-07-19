@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class PrijavaComponent implements OnInit {
   prijavaForma: FormGroup;
-  termini: Termin[];
 
   constructor(
     private fb: FormBuilder,

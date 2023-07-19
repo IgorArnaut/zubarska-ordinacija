@@ -10,23 +10,18 @@ import * as moment from 'moment';
   templateUrl: './termin.component.html',
   styleUrls: ['./termin.component.css'],
 })
-export class TerminComponent implements OnInit {
+export class TerminComponent {
   @Input() termin: Termin;
-  proslo24: boolean = false;
 
   constructor(private ts: TerminService) {}
 
-  ngOnInit(): void {
-    const diff = moment().diff(moment(this.termin.datum), 'hours');
-    this.proslo24 = diff > 24;
-    console.log(this.proslo24);
-  }
-
   otkaziTermin(): void {
-    if (!this.proslo24) {
-      this.ts
-        .otkaziTermin(this.termin.id)
-        .subscribe({ next: () => {}, error: (err) => console.log(err) });
-    }
+    const diff = moment().diff(moment(this.termin.datum), 'hours');
+    const nijeProslo24 = 0 <= diff && diff < 24;
+
+    if (nijeProslo24)
+      this.ts.otkaziTermin(this.termin.id).subscribe({
+        error: (err) => console.log(err),
+      });
   }
 }

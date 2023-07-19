@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 import { Termin } from '../model/termin';
 import { TerminService } from '../termin.service';
@@ -25,9 +25,8 @@ export class AuthService {
   }
 
   prijaviSe(jmbg: string): Observable<boolean> {
-    if (jmbg === '42') {
-      return this.prijaviDoktora();
-    } else return this.prijaviPacijenta(jmbg);
+    if (jmbg === '42') return this.prijaviDoktora();
+    else return this.prijaviPacijenta(jmbg);
   }
 
   private postoji(jmbg: string): boolean {
@@ -40,7 +39,7 @@ export class AuthService {
 
     return of(this.doktor).pipe(
       delay(1000),
-      tap((val) => console.log(`Uspensna prijava: ${val}`))
+      tap((val) => console.log(`Uspenšna prijava: ${val}`))
     );
   }
 
@@ -51,7 +50,7 @@ export class AuthService {
 
     return of(this.pacijent).pipe(
       delay(1000),
-      tap((val) => console.log(`Uspensna prijava: ${val}`))
+      tap((val) => console.log(`Uspenšna prijava: ${val}`))
     );
   }
 

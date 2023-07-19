@@ -98,7 +98,7 @@ export class ZakazivanjeComponent {
       };
 
       this.ts.zakaziTermin(termin).subscribe({
-        next: (res) => console.log(res),
+        next: (res) => {},
         error: (err) => console.error(err),
       });
     }

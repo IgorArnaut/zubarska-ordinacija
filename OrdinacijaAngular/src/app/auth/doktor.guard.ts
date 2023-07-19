@@ -10,7 +10,6 @@ import { inject } from '@angular/core';
 import { AuthService } from './auth.service';
 
 function checkLogin(url: string, router: Router): true | UrlTree {
-  console.log('Url: ' + url);
   let val: string | null = localStorage.getItem('doktor');
 
   if (val != null && val == 'true') {

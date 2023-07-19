@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Dobrodosli." });
+  res.json({ message: "Dobrodošli." });
 });
 
 require("./app/routes/termin.routes.js")(app);

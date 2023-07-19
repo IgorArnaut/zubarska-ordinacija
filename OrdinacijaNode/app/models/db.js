@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 // open the MySQL connection
 connection.connect((error) => {
   if (error) throw error;
-  console.log("Uspesno povezivanje sa bazom.");
+  console.log("Uspešno povezivanje sa bazom.");
 });
 
 module.exports = connection;

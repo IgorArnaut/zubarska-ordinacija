@@ -13,21 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PacijentComponent {
   termini: Termin[];
-  proslo24: boolean = false;
-
   constructor(private ts: TerminService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
         this.ts.vratiTerminePacijenta(params['jmbg']).subscribe({
-          next: (data) => {
-            this.termini = data;
-          },
+          next: (data) => (this.termini = data),
           error: (err) => console.log(err),
         });
-
-        console.log(this.proslo24);
       },
     });
   }

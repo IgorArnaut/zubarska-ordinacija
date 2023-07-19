@@ -1,27 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col" *ngIf="sedmica">
-      <table class="table table-borderless">
-        <tr>
-          <th>Ponedeljak</th>
-          <th>Utorak</th>
-          <th>Sreda</th>
-          <th>Četvrtak</th>
-          <th>Petak</th>
-          <th>Subota</th>
-          <th>Nedelja</th>
-        </tr>
-
-        <tr>
-          <td *ngFor="let dan of sedmica">
-            <app-termin *ngFor="let termin of dan" [termin]="termin" />
-          </td>
-        </tr>
-      </table>
-    </div>
+    <p class="h1 fw-bold text-center">Nedeljni prikaz</p>
   </div>
-  <div class="row">
-    <div class="d-flex justify-content-between">
+</div>
+
+<div class="container bg-light border">
+  <div class="row mb-3">
+    <div class="col-12 d-flex justify-content-between">
       <button
         class="btn btn-primary fw-bold fs-5"
         (click)="prethodni()"
@@ -36,6 +21,23 @@
       >
         Sledeći
       </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 fw-bold fs-5">Vreme</div>
+    <div class="col fw-bold fs-5">Ponedeljak</div>
+    <div class="col fw-bold fs-5">Utorak</div>
+    <div class="col fw-bold fs-5">Sreda</div>
+    <div class="col fw-bold fs-5">Četvrtak</div>
+    <div class="col fw-bold fs-5">Petak</div>
+    <div class="col fw-bold fs-5">Subota</div>
+    <div class="col fw-bold fs-5">Nedelja</div>
+  </div>
+  <div class="row" *ngFor="let termin of sedmica | keyvalue">
+    <div class="col-1 fw-bold fs-5">{{ termin.key }}</div>
+    <div class="col" *ngFor="let dan of termin.value | keyvalue">
+      <app-termin *ngIf="dan.value" [termin]="dan.value" />
     </div>
   </div>
 </div>

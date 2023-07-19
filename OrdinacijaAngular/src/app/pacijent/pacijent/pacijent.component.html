@@ -1,11 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10" *ngIf="termini">
-      <div class="mb-3" *ngFor="let termin of termini">
+    <p class="h1 fw-bold text-center">Termini pacijenta</p>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="termini">
+    <div class="row mb-3" *ngFor="let termin of termini">
+      <div class="col-1"></div>
+      <div class="col">
         <app-termin [termin]="termin" />
       </div>
+      <div class="col-1"></div>
     </div>
-    <div class="col-1"></div>
   </div>
 </div>

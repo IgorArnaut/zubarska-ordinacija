@@ -1,39 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10" *ngIf="danas">
-      <div class="text-center">
-        <span class="fw-semibold">{{ danas[0].datum | date : "EEEE" }}</span
-        >:
-        {{ danas[0].datum | date }}
-      </div>
-
-      <div class="mb-3" *ngFor="let termin of danas">
-        <app-termin [termin]="termin" />
-      </div>
-    </div>
-    <div class="col-1"></div>
+    <p class="h1 fw-bold text-center">Dnevni prikaz</p>
   </div>
-  <div class="row">
-    <div class="col-1"></div>
+</div>
 
-    <div class="col-10 d-flex justify-content-between">
+<div class="container bg-light border">
+  <div class="row mb-3">
+    <div class="col d-flex justify-content-between">
       <button
         class="btn btn-primary fw-bold fs-5"
         (click)="prethodni()"
-        [disabled]="!(index > 0)"
+        [disabled]="termini && !(index > 0)"
       >
         Prethodni
       </button>
       <button
         class="btn btn-primary fw-bold fs-5"
         (click)="sledeci()"
-        [disabled]="!(index + 1 < termini.length)"
+        [disabled]="termini && !(index + 1 < termini.length)"
       >
         Sledeći
       </button>
     </div>
+  </div>
 
-    <div class="col-1"></div>
+  <div class="row">
+    <div class="col-1 fw-bold fs-5">Vreme</div>
+    <div class="col-11 fw-bold fs-5">Termin</div>
+  </div>
+  <div class="row" *ngFor="let termin of danas | keyvalue">
+    <div class="col-1 fw-bold fs-5">{{ termin.key }}</div>
+    <div class="col-11">
+      <app-termin *ngIf="termin.value" [termin]="termin.value" />
+    </div>
   </div>
 </div>

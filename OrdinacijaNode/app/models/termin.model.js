@@ -13,7 +13,7 @@ const Termin = function (termin) {
 Termin.zakazi = (noviTermin, result) => {
   sql.query("INSERT INTO termin SET ?", noviTermin, (err, res) => {
     if (err) {
-      console.log("Greska: ", err);
+      console.log("Greška: ", err);
       result(err, null);
       return;
     }
@@ -26,7 +26,7 @@ Termin.zakazi = (noviTermin, result) => {
 Termin.pronadjiPoJMBG = (jmbg, result) => {
   sql.query(`SELECT * FROM termin WHERE jmbg LIKE ${jmbg}`, (err, res) => {
     if (err) {
-      console.log("Greska: ", err);
+      console.log("Greška: ", err);
       result(null, err);
       return;
     }
@@ -39,7 +39,7 @@ Termin.pronadjiPoJMBG = (jmbg, result) => {
 Termin.vratiSve = (result) => {
   sql.query("SELECT * FROM termin", (err, res) => {
     if (err) {
-      console.log("Greska: ", err);
+      console.log("Greška: ", err);
       result(null, err);
       return;
     }
@@ -52,13 +52,13 @@ Termin.vratiSve = (result) => {
 Termin.otkazi = (id, result) => {
   sql.query("DELETE FROM termin WHERE id = ?", id, (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.log("Greška: ", err);
       result(null, err);
       return;
     }
 
     if (res.affectedRows == 0) {
-      result({ kind: "Nije pronadjen termin" }, null);
+      result({ kind: "Nije pronađen termin" }, null);
       return;
     }
 
